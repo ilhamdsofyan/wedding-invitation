@@ -366,6 +366,11 @@ footer li {
   font-weight: bold;
 }
 
+.custom-tooltip {
+  --bs-tooltip-bg: var(--pink);
+  --bs-tooltip-color: #fff;
+}
+
 /* Media Query */
 /* Extra Large */
 @media (max-width: 1200px) {

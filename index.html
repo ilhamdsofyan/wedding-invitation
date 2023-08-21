@@ -361,15 +361,15 @@
               </li>
               <li class="list-group-item p-3">
                 <div class="mb-2"><img src="assets/img/logo-bank-bca.png" alt="Bank BCA" class="img-fluid" width="200px"></div>
-                <span class="copy-me">5980110437</span>
+                <span class="copy-me" data-key="0">5980110437</span>
               </li>
               <li class="list-group-item p-3">
                 <div class="mb-2"><img src="assets/img/logo-bank-bni.png" alt="Bank BNI" class="img-fluid" width="200px"></div>
-                <span class="copy-me">0537766305</span>
+                <span class="copy-me" data-key="1">0537766305</span>
               </li>
               <li class="list-group-item p-3">
                 <div class="mb-2"><img src="assets/img/logo-bank-jago.png" alt="Bank Jago" class="img-fluid" width="200px"></div>
-                <span class="copy-me">102946438111</span>
+                <span class="copy-me" data-key="2">102946438111</span>
               </li>
             </ul>
           </div>
@@ -381,15 +381,15 @@
               </li>
               <li class="list-group-item p-3">
                 <div class="mb-2"><img src="assets/img/logo-bank-bca.png" alt="Bank BCA" class="img-fluid" width="200px"></div>
-                <span class="copy-me">7005059372</span>
+                <span class="copy-me" data-key="3">7005059372</span>
               </li>
               <li class="list-group-item p-3">
                 <div class="mb-2"><img src="assets/img/logo-bank-bni.png" alt="Bank BNI" class="img-fluid" width="200px"></div>
-                <span class="copy-me">0793650182</span>
+                <span class="copy-me" data-key="4">0793650182</span>
               </li>
               <li class="list-group-item p-3">
                 <div class="mb-2"><img src="assets/img/logo-bank-jago.png" alt="Bank Jago" class="img-fluid" width="200px"></div>
-                <span class="copy-me">107215734077</span>
+                <span class="copy-me" data-key="5">107215734077</span>
               </li>
             </ul>
           </div>
@@ -416,6 +416,7 @@
       </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
 
@@ -526,19 +527,44 @@
     </script>
 
     <script title="Auto Copy Text">
-      const copyMe = document.querySelector('.copy-me');
+      // Tooltip copied successfully
+      const tooltipTriggerList = document.querySelectorAll('.copy-me')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl, {
+        title: 'Copied',
+        placement: 'bottom',
+        customClass: 'custom-tooltip',
+        trigger: 'manual'
+      }))
 
-      copyMe.onclick = function() {
-        document.execCommand('copy');
-      }
+      document.addEventListener('DOMContentLoaded', function () {
+        const copySpans = document.querySelectorAll('.copy-me');
 
-      copyMe.addEventListener('copy', function(e) {
-        e.preventDefault();
+        copySpans.forEach(function (span) {
+          span.addEventListener('click', function () {
+            const key = span.getAttribute('data-key');
+            tooltipList[key].show()
 
-        if (e.clipboardData) {
-          e.clipboardData.setData("text/plain", copyMe.textContent);
-        }
-      })
+            // Create a temporary text area to facilitate copying
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = span.textContent;
+            document.body.appendChild(tempTextArea);
+
+            // Select the text in the temporary text area
+            tempTextArea.select();
+            tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+
+            // Copy the selected text to the clipboard
+            document.execCommand('copy');
+
+            // Clean up: Remove the temporary text area
+            document.body.removeChild(tempTextArea);
+
+            setTimeout(() => {
+              tooltipList[key].hide()
+            }, 500);
+          });
+        });
+      });
     </script>
   </body>
 </html>
