@@ -172,13 +172,13 @@ body {
   border-top: 1px solid #999;
 }
 
-.story, .gallery, .rsvp {
+.story, .gallery, .gifts{
   padding-top: 10rem;
   padding-bottom: 8rem;
   min-height: 100vh;
 }
 
-.story span, .gallery span {
+.story span, .gallery span, .gifts span {
   text-transform: uppercase;
   color: #666;
   font-size: 0.9rem;
@@ -187,7 +187,7 @@ body {
   margin-bottom: 1rem;
 }
 
-.story p, .gallery p, .rsvp p {
+.story p, .gallery p, .rsvp p, .gifts p {
   font-size: 1rem;
   font-weight: 300;
 }
@@ -301,6 +301,8 @@ body {
 }
 
 .rsvp {
+  padding-top: 10rem;
+  padding-bottom: 8rem;
   background-color: var(--bg);
 }
 
@@ -331,6 +333,37 @@ body {
 .rsvp button:disabled {
   background-color: #843054 !important;
   color: #fff !important;
+}
+
+footer {
+  padding: 3rem;
+  background-color: var(--pink);
+  color: #fff;
+}
+
+footer a {
+  color: var(--bg);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #fff;
+}
+
+footer li {
+  list-style: none;
+  display: inline;
+  margin: 0.5rem;
+}
+
+.copy-me {
+  font-size: 1rem !important;
+  cursor: pointer;
+}
+
+.copy-me:hover {
+  font-weight: bold;
 }
 
 /* Media Query */
