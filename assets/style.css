@@ -136,9 +136,6 @@ body {
 .info {
   background-color: var(--bg);
   color: white;
-  padding-top: 10rem;
-  padding-bottom: 8rem;
-  min-height: 100vh;
 }
 
 .info .address {
@@ -172,8 +169,8 @@ body {
   border-top: 1px solid #999;
 }
 
-.story, .gallery, .gifts{
-  padding-top: 10rem;
+.story, .gallery, .gifts, .info {
+  padding-top: 8.5rem;
   padding-bottom: 8rem;
   min-height: 100vh;
 }
