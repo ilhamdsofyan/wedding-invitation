@@ -111,6 +111,8 @@
             <p class="address">Alamat: Masjid Ilhami, Sawangan 2 <br/>
               Vila Rizki Ilhami, Sawangan Lama, Sawangan, Depok City, West Java 16517.</p>
 
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.899053538642!2d106.74522901143028!3d-6.40700406263632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e9fb660567f7%3A0x60b7e0e47895376c!2sMasjid%20Ilhami%20Sawangan!5e0!3m2!1sid!2sid!4v1693417403097!5m2!1sid!2sid" width="100%" height="250" style="border:0;display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
             <a href="https://goo.gl/maps/gbLdzHXNEqhUCCa29" target="_blank" class="btn btn-light btn-sm my-3">Klik untuk membuka peta</a>
 
             <p class="description">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba ditujuan, namun tidak ada tanda sedang dilangsungkannya pernikahan, maka bisa jadi Anda salah jadwal, atau salah tempat.</p>
@@ -394,8 +396,6 @@
             </ul>
           </div>
         </div>
-
-        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2bm1pg2yOirpf6UFhsf2bN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </section>
 
@@ -416,8 +416,8 @@
     </footer>
 
     <div id="audio-container">
-      <audio id="song" autoplay loop>
-        <source src="" type="audio/mp3">
+      <audio id="song" loop>
+        <source type="audio/mp3">
       </audio>
 
       <div class="audio-icon-wrapper" style="display: none;">
@@ -465,6 +465,9 @@
 
     <script title="Disable Scrolling">
       const rootElement = document.querySelector(":root");
+      const audioIconWrapper = document.querySelector(".audio-icon-wrapper");
+      const song = document.querySelector('#song');
+      let isPlaying = false;
 
       function disableScroll() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -485,11 +488,54 @@
         document.querySelector("body").style.overflow = 'auto';
 
         // localStorage.setItem('openedInvitation', 'true');
+
+        playAudio();
+        audioIconWrapper.style.display = 'flex';
+
+        isPlaying = true;
+      }
+
+      function playAudio() {
+        const audioSource = [
+          'assets/audio/Bersenyawa.mp3',
+          'assets/audio/Star.mp3',
+          'assets/audio/Blessed.mp3',
+        ];
+
+        const randAudioSource = audioSource[Math.floor(Math.random() * audioSource.length)];
+        // Set audio source
+        document.querySelector('#song source').src = randAudioSource;
+
+        // Load the new source
+        song.load();
+
+        // Listen for the 'loadedmetadata' event to ensure the audio is ready to play
+        song.addEventListener('loadedmetadata', function() {
+            // Now you can play the audio
+            song.volume = 0.2;
+            song.play();
+        });
       }
 
       // if (!localStorage.getItem('openedInvitation')) {
         disableScroll();
       // }
+
+      // Play/pause the audio
+      audioIconWrapper.onclick = function() {
+        if (isPlaying) {
+          song.pause();
+          audioIconWrapper.querySelector('i').classList.remove('bi-disc');
+          audioIconWrapper.querySelector('i').classList.add('bi-pause-circle');
+
+        } else {
+          song.play();
+          audioIconWrapper.querySelector('i').classList.remove('bi-pause-circle');
+          audioIconWrapper.querySelector('i').classList.add('bi-disc');
+        }
+
+        isPlaying = !isPlaying;
+      }
 
       // Smooth click self link
       window.addEventListener('beforeunload', function() {
