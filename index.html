@@ -50,7 +50,7 @@
               <a class="nav-link" href="#info">Info</a>
               <a class="nav-link" href="#story">Story</a>
               <a class="nav-link" href="#gallery">Gallery</a>
-              <a class="nav-link" href="#rsvp">RSVP</a>
+              <!-- <a class="nav-link" href="#rsvp">RSVP</a> -->
               <a class="nav-link" href="#gifts">Gifts</a>
             </div>
           </div>
@@ -302,7 +302,7 @@
       </div>
     </section>
 
-    <section id="rsvp" class="rsvp">
+    <!-- <section id="rsvp" class="rsvp">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-10 text-center">
@@ -344,7 +344,7 @@
           </div>
         </form>
       </div>
-    </section>
+    </section> -->
 
     <section id="gifts" class="gifts">
       <div class="container">
@@ -416,7 +416,7 @@
     </footer>
 
     <div id="audio-container">
-      <audio id="song" loop>
+      <audio id="song">
         <source type="audio/mp3">
       </audio>
 
@@ -502,19 +502,28 @@
           'assets/audio/Blessed.mp3',
         ];
 
-        const randAudioSource = audioSource[Math.floor(Math.random() * audioSource.length)];
-        // Set audio source
-        document.querySelector('#song source').src = randAudioSource;
+        // Function to play a random audio source
+        function playRandomAudio() {
+          const randAudioSource = audioSource[Math.floor(Math.random() * audioSource.length)];
+          // Set audio source
+          document.querySelector('#song source').src = randAudioSource;
 
-        // Load the new source
-        song.load();
+          // Load the new source
+          song.load();
 
-        // Listen for the 'loadedmetadata' event to ensure the audio is ready to play
-        song.addEventListener('loadedmetadata', function() {
-            // Now you can play the audio
-            song.volume = 0.2;
-            song.play();
-        });
+          // Listen for the 'loadedmetadata' event to ensure the audio is ready to play
+          song.addEventListener('loadedmetadata', function() {
+              // Now you can play the audio
+              song.volume = 0.3;
+              song.play();
+          });
+        }
+
+        // Add an "ended" event listener to the audio element
+        song.addEventListener('ended', playRandomAudio);
+
+        // Initial play
+        playRandomAudio();
       }
 
       // if (!localStorage.getItem('openedInvitation')) {
@@ -567,48 +576,48 @@
     </script>
 
     <script>
-      window.addEventListener("load", function() {
-        const form = document.getElementById('form-rsvp');
-        const buttonSubmit = document.querySelector('#btn-rsvp');
+      // window.addEventListener("load", function() {
+      //   const form = document.getElementById('form-rsvp');
+      //   const buttonSubmit = document.querySelector('#btn-rsvp');
 
-        form.addEventListener("submit", function(e) {
-          e.preventDefault();
-          buttonSubmit.setAttribute('disabled', 'disabled');
+      //   form.addEventListener("submit", function(e) {
+      //     e.preventDefault();
+      //     buttonSubmit.setAttribute('disabled', 'disabled');
           
-          const data = new FormData(form);
-          const action = e.target.action;
+      //     const data = new FormData(form);
+      //     const action = e.target.action;
           
-          fetch(action, {
-            method: 'POST',
-            body: data,
-          })
-          .then((data) => {
-            buttonSubmit.removeAttribute('disabled');
-            form.reset();
-          })
-        });
+      //     fetch(action, {
+      //       method: 'POST',
+      //       body: data,
+      //     })
+      //     .then((data) => {
+      //       buttonSubmit.removeAttribute('disabled');
+      //       form.reset();
+      //     })
+      //   });
 
-        fetchData(guest)
-          .then(results => {
-            const result = results[0];
+      //   fetchData(guest)
+      //     .then(results => {
+      //       const result = results[0];
 
-            if (!result) {
-              window.location = "https://ilhamdsofyan.com";
-            }
-          });
-      });
+      //       if (!result) {
+      //         window.location = "https://ilhamdsofyan.com";
+      //       }
+      //     });
+      // });
 
-      async function fetchData(valueToSearch) {
-        const url = `https://script.google.com/macros/s/AKfycbxMvng543H70gsnmUZSRyCdCm1yIufRZanbgfCwaAFPUdpqpZneBzZF3o9zhDT-5l_n/exec?column=Nama&value=${valueToSearch}`;
+      // async function fetchData(valueToSearch) {
+      //   const url = `https://script.google.com/macros/s/AKfycbxMvng543H70gsnmUZSRyCdCm1yIufRZanbgfCwaAFPUdpqpZneBzZF3o9zhDT-5l_n/exec?column=Nama&value=${valueToSearch}`;
         
-        try {
-          const response = await fetch(url);
-          const data = await response.json();
-          return data;
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      }
+      //   try {
+      //     const response = await fetch(url);
+      //     const data = await response.json();
+      //     return data;
+      //   } catch (error) {
+      //     console.error('Error fetching data:', error);
+      //   }
+      // }
     </script>
 
     <script title="Auto Copy Text">
