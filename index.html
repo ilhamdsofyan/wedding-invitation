@@ -111,8 +111,6 @@
             <p class="address">Alamat: Masjid Ilhami, Sawangan 2 <br/>
               Vila Rizki Ilhami, Sawangan Lama, Sawangan, Depok City, West Java 16517.</p>
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.899053538642!2d106.74522901143028!3d-6.40700406263632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e9fb660567f7%3A0x60b7e0e47895376c!2sMasjid%20Ilhami%20Sawangan!5e0!3m2!1sid!2sid!4v1693417403097!5m2!1sid!2sid" width="100%" height="250" style="border:0;display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
             <a href="https://goo.gl/maps/gbLdzHXNEqhUCCa29" target="_blank" class="btn btn-light btn-sm my-3">Klik untuk membuka peta</a>
 
             <p class="description">Diharapkan untuk tidak salah alamat dan tanggal. Manakala tiba ditujuan, namun tidak ada tanda sedang dilangsungkannya pernikahan, maka bisa jadi Anda salah jadwal, atau salah tempat.</p>
@@ -396,6 +394,8 @@
             </ul>
           </div>
         </div>
+
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2bm1pg2yOirpf6UFhsf2bN?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
       </div>
     </section>
 
@@ -414,6 +414,16 @@
         </div>
       </div>
     </footer>
+
+    <div id="audio-container">
+      <audio id="song" autoplay loop>
+        <source src="" type="audio/mp3">
+      </audio>
+
+      <div class="audio-icon-wrapper" style="display: none;">
+        <i class="bi bi-disc"></i>
+      </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
@@ -474,12 +484,40 @@
         rootElement.style.scrollBehavior = 'smooth';
         document.querySelector("body").style.overflow = 'auto';
 
-        localStorage.setItem('openedInvitation', 'true');
+        // localStorage.setItem('openedInvitation', 'true');
       }
 
-      if (!localStorage.getItem('openedInvitation')) {
+      // if (!localStorage.getItem('openedInvitation')) {
         disableScroll();
-      }
+      // }
+
+      // Smooth click self link
+      window.addEventListener('beforeunload', function() {
+          const firstSection = document.getElementById('hero');
+          window.scrollTo({
+              top: firstSection.offsetTop,
+              behavior: 'smooth'
+          });
+      });
+      
+      // Select all elements with attributes starting with #
+      const elementsWithHashAttribute = document.querySelectorAll('[href^="#"]');
+
+      // Add a click event listener to each selected element
+      elementsWithHashAttribute.forEach(function(element) {
+          element.addEventListener('click', function(e) {
+              e.preventDefault()
+
+              const targetId = this.getAttribute('href').substring(1); // Get the target section ID
+              const targetElement = document.getElementById(targetId); // Find the target section element
+              const offsetTop = targetElement.offsetTop; // Get its top offset
+              
+              window.scrollTo({
+                  top: offsetTop,
+                  behavior: 'smooth' // Enable smooth scrolling
+              });
+          });
+      });
     </script>
 
     <script>
@@ -566,6 +604,10 @@
           });
         });
       });
+    </script>
+
+    <script title="Music Related">
+      
     </script>
   </body>
 </html>
