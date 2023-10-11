@@ -11,7 +11,7 @@ Header set Access-Control-Allow-Methods "GET"
 Header set X-Frame-Options "DENY"
 Header set X-XSS-Protection "1; mode=block"
 Header set X-Content-Type-Options "nosniff"
-Header set Content-Security-Policy "base-uri 'self' *.googletagmanager.com *.google-analytics.com *google.com 'unsafe-inline' 'unsafe-eval'"
+Header set Content-Security-Policy "base-uri 'self' *.googletagmanager.com *.google-analytics.com *.google.com 'unsafe-inline' 'unsafe-eval'"
 Header set Strict-Transport-Security "max-age=31536000" env=HTTPS
 Header set Cache-Control "max-age=31536000, public, must-revalidate"
 </IfModule>
