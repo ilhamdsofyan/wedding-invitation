@@ -405,6 +405,10 @@ footer li {
   .home .heart {
     transform: translateX(-50%) translateY(45px);
   }
+
+  .hero::before {
+    background-image: url(img/hero_mob.jpg?v=1);
+  }
 }
 
 
@@ -446,6 +450,10 @@ footer li {
     left: -13px;
     right: auto;
   }
+
+  .hero::before {
+    background-image: url(img/hero_mob.jpg?v=1);
+  }
 }
 
 /* Tablet */
@@ -466,6 +474,10 @@ footer li {
   .timeline li .timeline-image {
     width: 140px;
     height: 140px;
+  }
+
+  .hero::before {
+    background-image: url(img/hero_mob.jpg?v=1);
   }
 }
 
@@ -491,5 +503,9 @@ footer li {
 
   .timeline li .timeline-panel::after {
     top: 61px;
+  }
+
+  .hero::before {
+    background-image: url(img/hero_mob.jpg?v=1);
   }
 }
