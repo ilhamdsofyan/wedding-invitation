@@ -536,6 +536,7 @@
       });
 
       async function fetchData(valueToSearch) {
+        valueToSearch = encodeURIComponent(valueToSearch)
         const url = `https://script.google.com/macros/s/AKfycbxMvng543H70gsnmUZSRyCdCm1yIufRZanbgfCwaAFPUdpqpZneBzZF3o9zhDT-5l_n/exec?column=Nama&value=${valueToSearch}`;
         
         try {
