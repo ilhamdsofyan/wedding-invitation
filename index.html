@@ -629,39 +629,39 @@
     </script>
 
     <script>
-      // window.addEventListener("load", function() {
-      //   const form = document.getElementById('form-rsvp');
-      //   const buttonSubmit = document.querySelector('#btn-rsvp');
+      window.addEventListener("load", function () {
+        //   const form = document.getElementById('form-rsvp');
+        //   const buttonSubmit = document.querySelector('#btn-rsvp');
 
-      //   form.addEventListener("submit", function(e) {
-      //     e.preventDefault();
-      //     buttonSubmit.setAttribute('disabled', 'disabled');
+        //   form.addEventListener("submit", function(e) {
+        //     e.preventDefault();
+        //     buttonSubmit.setAttribute('disabled', 'disabled');
 
-      //     const data = new FormData(form);
-      //     const action = e.target.action;
+        //     const data = new FormData(form);
+        //     const action = e.target.action;
 
-      //     fetch(action, {
-      //       method: 'POST',
-      //       body: data,
-      //     })
-      //     .then((data) => {
-      //       buttonSubmit.removeAttribute('disabled');
-      //       form.reset();
-      //     })
-      //   });
+        //     fetch(action, {
+        //       method: 'POST',
+        //       body: data,
+        //     })
+        //     .then((data) => {
+        //       buttonSubmit.removeAttribute('disabled');
+        //       form.reset();
+        //     })
+        //   });
 
-      //   fetchData(guest)
-      //     .then(results => {
-      //       const result = results[0];
-      //       if (!result) {
-      //         window.location = "https://ilhamdsofyan.com";
-      //       }
-      //     });
-      // });
+        fetchData(guest).then((results) => {
+          const result = results[0];
+          if (!result) {
+            alert("Mohon maaf, anda tidak diundang");
+            window.location = "https://ilhamdsofyan.com";
+          }
+        });
+      });
 
       async function fetchData(valueToSearch) {
         valueToSearch = encodeURIComponent(valueToSearch);
-        const url = `https://script.google.com/macros/s/AKfycbxMvng543H70gsnmUZSRyCdCm1yIufRZanbgfCwaAFPUdpqpZneBzZF3o9zhDT-5l_n/exec?column=Nama&value=${valueToSearch}`;
+        const url = `https://script.google.com/macros/s/AKfycbzihbPt5FCFtl7FzTOX7CBpStj4ZmXUFuhF74hc9UXfokN1aN11EQI-iuEOEVkuaGQN4A/exec?column=Nama&value=${valueToSearch}`;
 
         try {
           const response = await fetch(url);
