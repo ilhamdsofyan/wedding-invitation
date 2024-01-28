@@ -428,7 +428,7 @@ footer li {
   }
 
   .hero::before {
-    background-image: url(img/hero_mob.jpg?v=1);
+    background-image: url(img/hero.jpeg?v=1);
   }
 }
 
@@ -472,7 +472,7 @@ footer li {
   }
 
   .hero::before {
-    background-image: url(img/hero_mob.jpg?v=1);
+    background-image: url(img/hero.jpeg?v=1);
   }
 }
 
@@ -497,7 +497,7 @@ footer li {
   }
 
   .hero::before {
-    background-image: url(img/hero_mob.jpg?v=1);
+    background-image: url(img/hero.jpeg?v=1);
   }
 }
 
@@ -526,6 +526,6 @@ footer li {
   }
 
   .hero::before {
-    background-image: url(img/hero_mob.jpg?v=1);
+    background-image: url(img/hero.jpeg?v=1);
   }
 }
