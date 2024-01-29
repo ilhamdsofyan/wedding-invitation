@@ -25,6 +25,10 @@ body {
   filter: brightness(50%);
 }
 
+.ff-sacra {
+  font-family: "Sacramento", cursive;
+}
+
 .hero h1,
 .hero h4,
 .hero p {
